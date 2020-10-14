@@ -1,6 +1,8 @@
+const jwt = require('express-jwt');
 const express = require('express');
 const router = express.Router();
 const dataInventors = require('./../data/inventor');
+
 
 // listado de todos los inventors
 // http://localhost:3000/api/inventors/
