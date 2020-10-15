@@ -12,31 +12,31 @@ const expressJwt = require('express-jwt');
 const { Buffer } = require('buffer');
 
 /** Clave de firma de los JWT plana */
-// const secretKey = 'Grupo2-SecretKey'
+const secretKey = 'Grupo2-SecretKey'
 /** Clave de firma de los JWT hasheada */
-const secretKey = Buffer.from('Grupo2-SecretKey', 'base64')
+//const secretKey = Buffer.from('Grupo2-SecretKey', 'base64')
 
 let app = express();
 
 /** Opcion para todos los endpoint con excepcion el que genera el token */
-// app.use(
-//   expressJwt(
-//     { 
-//       secret: secretKey,
-//       algorithms: ['sha1', 'RS256', 'HS256'],
-//     }
-//   ).unless({path: ['/token']})
-// );
-
-/** Opcion para todos los metodos con excepcion de los GET */
 app.use(
   expressJwt(
     { 
       secret: secretKey,
       algorithms: ['sha1', 'RS256', 'HS256'],
     }
-  ).unless({ method: 'GET' })
+  ).unless({path: ['/token']})
 );
+
+/** Opcion para todos los metodos con excepcion de los GET */
+// app.use(
+//   expressJwt(
+//     { 
+//       secret: secretKey,
+//       algorithms: ['sha1', 'RS256', 'HS256'],
+//     }
+//   ).unless({ method: 'GET' })
+// );
 
 
 
